@@ -3,7 +3,6 @@ import time
 
 import logging
 import requests
-import telegram
 from dotenv import load_dotenv
 
 load_dotenv()

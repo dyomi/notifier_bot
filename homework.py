@@ -17,14 +17,13 @@ def parse_homework_status(homework):
     homework_name = homework['homework_name']
     if homework['status'] == 'rejected':
         verdict = 'К сожалению в работе нашлись ошибки.'
-    else:
-        verdict = 'Ревьюеру всё понравилось,' \
-                  'можно приступать к следующему уроку.'
+    elif homework['status'] == 'approved':
+        verdict = ('Ревьюеру всё понравилось, '
+                   'можно приступать к следующему уроку.')
     return f'У вас проверили работу "{homework_name}"!\n\n{verdict}'
 
 
 def get_homework_statuses(current_timestamp):
-    ...
     params = {'from_date': current_timestamp}
     headers = {'Authorization': f'OAuth {PRAKTIKUM_TOKEN}'}
     homework_statuses = requests.get(
@@ -39,7 +38,6 @@ def send_message(message, bot_client):
 
 def main():
     # проинициализировать бота здесь
-    bot_client = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time())  # начальное значение timestamp
 
     while True:

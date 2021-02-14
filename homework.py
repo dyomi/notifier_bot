@@ -3,6 +3,7 @@ import time
 
 import logging
 import requests
+import telegram
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,6 +38,7 @@ def send_message(message, bot_client):
 
 def main():
     # проинициализировать бота здесь
+    bot_client = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time())  # начальное значение timestamp
 
     while True:

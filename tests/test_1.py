@@ -72,7 +72,6 @@ class TestHomework:
         )
 
     def test_send_message(self, monkeypatch, random_sid):
-
         def mock_telegram_bot(*args, **kwargs):
             return MockTelegramBot(*args, random_sid=random_sid, **kwargs)
 
@@ -96,7 +95,6 @@ class TestHomework:
             'Проверьте, что вы возвращаете в функции send_message() отправленное сообщение ботом bot.send_message()'
 
     def test_get_homework_statuses(self, monkeypatch, random_sid, current_timestamp):
-
         def mock_response_get(*args, **kwargs):
             return MockResponseGET(*args, random_sid=random_sid, current_timestamp=current_timestamp, **kwargs)
 
